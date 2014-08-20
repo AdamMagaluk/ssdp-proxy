@@ -1,0 +1,22 @@
+{
+  "name": "sspd-proxy",
+  "version": "0.0.0",
+  "description": "Simple Service Discovery Proxy program.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Magaluk <AdamMagaluk@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node-ssdp": "^2.0.1"
+  },
+  "devDependencies": {},
+  "bin": {
+    "ssdp-proxy": "./bin/ssdp-proxy"
+  },
+  "keywords": [
+    "ssdp",
+    "proxy"
+  ]
+}

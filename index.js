@@ -8,39 +8,24 @@ if (!process.argv[2]) {
 }
 
 var forwardAddress = process.argv[2];
-
+var urn = process.argv[3] || 'ssdp:all';
 function sendSearch() {
-  client.search('ssdp:all');
+  client.search(urn);
 }
 sendSearch();
 setInterval(sendSearch, 5000);
 
-var s = dgram.createSocket('udp4');
-s.on('error', function(err) {
-  console.error('Socket Error:', err);
-  process.exit(1);
+client.sock.on('message', function(buf, rinfo) {
+  forwardMsg(buf, rinfo);
 });
 
-s.on('close', function() {
-  console.log('Socket Close');
-  process.exit(0);
-});
-
-s.bind(1900, function() {
-  s.addMembership('239.255.255.250');
-});
-
-s.on('message', function(msg, rinfo) {
-  forwardMsg(msg);
-});
-
-function forwardMsg(buf) {
+function forwardMsg(buf, rinfo) {
   var socket = dgram.createSocket('udp4');
+  console.log(buf.toString())
   socket.send(buf, 0, buf.length, 1900, forwardAddress, function(err) {
     if(err) {
       console.log('Failed to forward:', err);
     }
-    console.log('Forwarded')
   });
 }
 

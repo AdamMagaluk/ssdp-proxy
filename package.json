@@ -1,5 +1,5 @@
 {
-  "name": "sspd-proxy",
+  "name": "ssdp-proxy",
   "version": "0.0.0",
   "description": "Simple Service Discovery Proxy program.",
   "main": "index.js",

@@ -3,7 +3,7 @@ var Client = require('node-ssdp').Client;
 var client = new Client();
 
 if (!process.argv[2]) {
-  console.error("Usage: ssdp-proxy <forward-address>");
+  console.error("Usage: ssdp-proxy <forward-address> [urn]");
   process.exit(1);
 }
 

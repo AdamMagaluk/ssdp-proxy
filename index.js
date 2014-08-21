@@ -21,7 +21,6 @@ client.sock.on('message', function(buf, rinfo) {
 
 function forwardMsg(buf, rinfo) {
   var socket = dgram.createSocket('udp4');
-  console.log(buf.toString())
   socket.send(buf, 0, buf.length, 1900, forwardAddress, function(err) {
     if(err) {
       console.log('Failed to forward:', err);
